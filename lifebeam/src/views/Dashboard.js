@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
-import Friends from '../components/Friends';
+import Friends from '../components/friends/Friends';
 export default class Dashboard extends Component {
   state = {
   }

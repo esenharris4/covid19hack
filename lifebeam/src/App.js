@@ -1,26 +1,44 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Dashboard from './views/Dashboard';
+import Profile from './views/Profile';
+import Home from './views/Home';
+import {BrowserRouter, Route} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+    <div>
+      <Route exact={true} path='/' render={() => (
+           <div className="App">
+             <Home />
+           </div>
+        )}/>
+        <Route exact={true} path='/dashboard' render={() => (
+           <div className="App">
+             <Dashboard />
+           </div>
+        )}/>
+      <Route exact={true} path='/profile' render={() => (
+           <div className="App">
+             <Dashboard />
+           </div>
+        )}/>
     </div>
+  </BrowserRouter>
+
   );
 }
 
 export default App;
+// <Route exact={true} path='/profile' render={() => (
+//        <div className="App">
+//          <Profile />
+//        </div>
+//   )}/>
+// <Route exact={true} path='/dashboard' render={() => (
+//          <div className="App">
+//            <Dashboard />
+//          </div>
+//     )}/>

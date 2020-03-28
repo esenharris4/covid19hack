@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navbar from '../components/Navbar';
 export default class Profile extends Component {
   state = {
   }
@@ -6,6 +7,7 @@ export default class Profile extends Component {
   render () {
       return (
         <div>
+        <Navbar name="Profile"/>
            <h1> connected! </h1>
         </div>
       )

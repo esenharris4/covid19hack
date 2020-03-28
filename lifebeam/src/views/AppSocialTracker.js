@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import AppDate from './../components/Date';
 import Box from '@material-ui/core/Box';
 import FriendListItem from './../components/FriendListItem';
+import TextField from '@material-ui/core/TextField';
 
 const AppSocialTracker = () => {
   const [count, setCount] = useState(0);
@@ -33,7 +34,10 @@ const AppSocialTracker = () => {
             We use this to keep track of the people you have seen for 14 days.
             We also use this to calculate your “social activity” score to track in real-time the danger level of seeing a user.
           </Box>
-          <FriendListItem/>
+          <form noValidate autoComplete="off">
+            <TextField id="standard-basic" label="Standard" />
+            <FriendListItem/>
+          </form>
           <Button variant="contained" color="primary" onClick={() => setCount(2)}>
             Next
           </Button>

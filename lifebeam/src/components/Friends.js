@@ -1,15 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import Avatar from './avatar'
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     '& > *': {
-      margin: theme.spacing(1),
-      width: theme.spacing(16),
-      height: theme.spacing(16),
+      margin: theme.spacing(5),
+      width: theme.spacing(30),
+      height: theme.spacing(45),
     },
   },
 }));
@@ -19,7 +20,9 @@ export const Friends = ({friends}) => {
 
   return (
     <div className={classes.root}>
-      <Paper elevation={3} />
+      <Paper elevation={3}>
+        <Avatar />
+      </Paper>
     </div>
   );
 }

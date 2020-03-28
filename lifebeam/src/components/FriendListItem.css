@@ -1,0 +1,14 @@
+.fli-c-layout {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.MuiPaper-root {
+    padding: 16px;
+}
+
+.fli-c-layout-fab {
+    position: absolute;
+    right: 0;
+}

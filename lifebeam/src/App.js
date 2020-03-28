@@ -4,6 +4,7 @@ import './App.css';
 import Dashboard from './views/Dashboard';
 import Profile from './views/Profile';
 import Home from './views/Home';
+import AppSocialTracker from './views/AppSocialTracker';
 import {BrowserRouter, Route} from 'react-router-dom';
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
     <div>
       <Route exact={true} path='/' render={() => (
            <div className="App">
-             <Home />
+             <AppSocialTracker/>
            </div>
         )}/>
         <Route exact={true} path='/dashboard' render={() => (

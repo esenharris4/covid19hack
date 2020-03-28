@@ -19,9 +19,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ButtonAppBar() {
+export const Navbar = ({ name }) => {
   const classes = useStyles();
 
+console.log(name);
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -29,7 +30,7 @@ export default function ButtonAppBar() {
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            News
+            {name}
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
@@ -37,3 +38,5 @@ export default function ButtonAppBar() {
     </div>
   );
 }
+
+export default Navbar;

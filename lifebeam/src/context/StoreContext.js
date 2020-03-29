@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 const StoreContext = React.createContext({});
 
 const initialState = {
-    friendsAddedList: [{}]
+    friendsAddedList: [],
+    navState: ''
 };
 
 const StoreProvider = ({ children }) => {

@@ -10,3 +10,14 @@
   bottom: 24px;
   right: 24px;
 }
+
+.app-form-container {
+  padding-top: 16px;
+  padding-left: 8px;
+  padding-bottom: 16px;
+}
+
+.app-form-container form {
+  display: flex;
+  align-items: center;
+}

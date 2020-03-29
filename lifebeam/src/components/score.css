@@ -1,0 +1,11 @@
+.app-score--low {
+    color: yellow;
+}
+
+.app-score--medium {
+    color: orange;
+}
+
+.app-score--high {
+    color: red;
+}

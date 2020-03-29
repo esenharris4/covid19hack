@@ -1,8 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Avatar from './avatar'
-import Stats from './stats'
+import FriendCard from './FriendCard';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,14 +21,58 @@ export const Friends = ({friends}) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Paper elevation={3}>
-        <Avatar />
-        <h3>Christie  Molloy</h3>
-        <h6> Christie will have to make this nicer </h6>
-        <Stats />
-      </Paper>
-    </div>
+    <Grid container spacing={2}>
+      <div className={classes.root}>
+        <Grid item xs={3}>
+          <FriendCard
+            avatar="Christie"
+            name="Christie Molloy"
+            friendScore="300"
+            time="4"
+          />
+        </Grid>
+        <Grid item xs={3}>
+          <FriendCard
+            avatar="Esen"
+            name="Christie Molloy"
+            friendScore="300"
+            time="4"
+          />
+        </Grid>
+        <Grid item xs={3}>
+          <FriendCard
+            avatar="Nia"
+            name="Christie Molloy"
+            friendScore="300"
+            time="4"
+          />
+        </Grid>
+        <Grid item xs={3}>
+          <FriendCard
+            avatar="Felipe"
+            name="Christie Molloy"
+            friendScore="300"
+            time="4"
+          />
+        </Grid>
+        <Grid item xs={3}>
+          <FriendCard
+            avatar="Sasha"
+            name="Christie Molloy"
+            friendScore="300"
+            time="4"
+          />
+        </Grid>
+        <Grid item xs={3}>
+          <FriendCard
+            avatar="Tyler"
+            name="Christie Molloy"
+            friendScore="300"
+            time="4"
+          />
+        </Grid>
+      </div>
+    </Grid>
   );
 }
 

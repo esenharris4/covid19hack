@@ -2,7 +2,10 @@ import React from 'react';
 import FavoriteBorderRoundedIcon from '@material-ui/icons/FavoriteBorderRounded';
 import { red,green } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
-import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
+import TimerIcon from '@material-ui/icons/Timer';
+import Box from '@material-ui/core/Box';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,20 +24,27 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ImageAvatars() {
+export const Stats = ({ friendScore, time }) => {
+
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <flex>
-        <FavoriteBorderRoundedIcon className={classes.small} style={{ color: red[500] }}/>
-        <h2> 10 </h2>
-      </flex>
-      <flex>
-        <ChatBubbleOutlineIcon className={classes.small} style={{ color: green[500] }}/>
-        <h2> 10 </h2>
-      </flex>
+      <div>
+      <LocalHospitalIcon className={classes.small} style={{ color: '#B388FF' }}/>
+        <Box fontSize={24} fontFamily="fontFamily" m={1}>
+          {friendScore}
+        </Box>
+      </div>
+      <div>
+        <TimerIcon className={classes.small} style={{ color: '#B388FF' }}/>
+        <Box fontSize={24} fontFamily="fontFamily" m={1}>
+          {time}
+        </Box>
+      </div>
     </div>
 
   );
 }
+
+export default Stats;

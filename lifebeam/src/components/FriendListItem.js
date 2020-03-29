@@ -6,20 +6,20 @@ import './FriendListItem.css';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 
-export const FriendListItem = () => {
+export const FriendListItem = ({name, score, recommended}) => {
     return (
-        <Paper elevation={3}>
-            <div className="fli-c-layout">
-                <Avatar src="images/avatar-0.jpg"/>
-                <Box fontSize={16} m={1}>
-                    Friend name
-                </Box>
+        <Paper elevation={3} className="fli-c-layout">
+            <Avatar src="images/avatar-0.jpg"/>
+            <Box fontSize={16} m={1}>
+                {name}
+            </Box>
+            { recommended == 'true' && (
                 <div className="fli-c-layout-fab">
                     <Fab color="secondary" size="small">
                         <AddIcon/>
                     </Fab>
                 </div>
-            </div>
+            ) }
         </Paper>
     )
 };

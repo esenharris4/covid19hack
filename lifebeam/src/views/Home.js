@@ -5,7 +5,6 @@ export default class Home extends Component {
   render () {
       return (
         <div>
-        <Navbar name="Home"/>
            <h1> connected! </h1>
         </div>
       )

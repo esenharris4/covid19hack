@@ -7,7 +7,6 @@ export default class Profile extends Component {
   render () {
       return (
         <div>
-        <Navbar name="Profile"/>
            <h1> connected! </h1>
         </div>
       )

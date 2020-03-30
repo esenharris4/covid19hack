@@ -5,8 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 
 export default class Profile extends Component {
-  state = {
-  }
 
   render () {
       return (

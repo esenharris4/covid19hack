@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
-import Friends from '../components/friends/Friends';
+import Friends from '../components/friend/Friends';
 import AppDate from '../components/Date';
 import Container from '@material-ui/core/Container';
 
 export default class Dashboard extends Component {
-  state = {
-  }
 
   render () {
       return (

@@ -1,12 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import Sasha from './../../images/avatar-5.jpg';
-import Tyler from './../../images/avatar-3.jpg';
-import Felipe from './../../images/avatar-4.jpg';
-import Nia from './../../images/avatar-2.jpg';
-import Esen from './../../images/avatar-1.jpg';
-import Christie from './../../images/avatar-0.jpg';
+import Sasha from './../images/avatar-5.jpg';
+import Tyler from './../images/avatar-3.jpg';
+import Felipe from './../images/avatar-4.jpg';
+import Nia from './../images/avatar-2.jpg';
+import Esen from './../images/avatar-1.jpg';
+import Christie from './../images/avatar-0.jpg';
 import './avatar.css';
 
 const useStyles = makeStyles(theme => ({

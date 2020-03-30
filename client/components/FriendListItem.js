@@ -5,7 +5,7 @@ import './FriendListItem.css';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import {Score} from './score';
-import Avatar from './../components/friends/avatar';
+import Avatar from './../components/avatar';
 
 export const FriendListItem = ({avatar, name, score, recommended}) => {
     return (

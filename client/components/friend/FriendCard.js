@@ -6,9 +6,9 @@ import React from 'react';
 // import TimerIcon from '@material-ui/icons/Timer';
 // import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
-import Avatar from './avatar';
+import Avatar from './../avatar';
 import Stats from './stats';
-import './../../App.css'
+import './../../css/App.css';
 
 
 export const FriendCard = ({ avatar, name, friendScore, time, backgroundColor, color }) => {

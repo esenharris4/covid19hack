@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 // import TextField from '@material-ui/core/TextField';
-import './../App.css';
+import './../css/App.css';
 import Button from '@material-ui/core/Button';
 import AppDate from './../components/Date';
 import Box from '@material-ui/core/Box';
@@ -52,7 +52,7 @@ const AppSocialTracker = () => {
             </input>
           </form>
             <Box fontSize={18} m={1}>
-              Friends added 
+              Friends added
             </Box>
             <Grid container spacing={2}>
               <Grid item xs={12}>
@@ -66,7 +66,7 @@ const AppSocialTracker = () => {
                 <FriendListItem/>
               </Grid>
             </Grid>
-            
+
             <Box fontSize={18} m={1}>
               Recommended friends
             </Box>

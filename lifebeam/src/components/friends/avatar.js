@@ -51,8 +51,6 @@ export default function ImageAvatars({avatar}) {
   }
 
   return (
-    <div className="app-avatar-position">
       <Avatar alt="Christie Molloy" src={who(avatar)} className={classes.large} />
-    </div>
   );
 }

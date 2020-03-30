@@ -14,7 +14,8 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import Chip from '@material-ui/core/Chip';
 import { makeStyles } from '@material-ui/core/styles';
 import { MapsAutoComplete } from './../components/MapsAutoComplete';
-import { Link , BrowserRouter as Router } from 'react-router-dom'
+// import { Link , BrowserRouter as Router } from 'react-router-dom';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -98,7 +99,6 @@ const AppSocialTracker = () => {
 
   return (
     <React.Fragment>
-      <Router>
       { count == '0' &&
         <React.Fragment>
           <Box fontWeight="fontWeightMedium" fontSize={28} style={{ padding: '40px' }}>
@@ -120,27 +120,30 @@ const AppSocialTracker = () => {
       { count == '1' &&
         <React.Fragment>
           <h1>Add friends you're seeing</h1>
-          <Box fontSize={16} m={2}>
+          <Box fontSize={16}>
             We use this to keep track of the people you have seen for 14 days.
             We also use this to calculate your “social activity” score to track in real-time the danger level of seeing a user.
           </Box>
           <div className="app-form-container">
             <form noValidate autoComplete="off">
-            <Autocomplete
-              id="combo-box-demo"
-              options={recentFriends}
-              getOptionLabel={(option) => option.name}
-              style={{ width: 600 }}
-              renderInput={(params) => <TextField {...params} label="Add friends" variant="outlined" />}
-            />
-              <Button style={{ marginLeft: '20px' }} label="Submit" type="submit" color="primary" variant="contained">
-                +
+              <Autocomplete
+                id="combo-box-demo"
+                options={recentFriends}
+                getOptionLabel={(option) => option.name}
+                style={{ width: 600 }}
+                renderInput={(params) => <TextField {...params} label="Add friends" variant="outlined" />}
+              />
+              <Button style={{ marginLeft: '20px', height: '50px' }} label="Submit" type="submit" color="primary">
+                Add
               </Button>
             </form>
           </div>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <FriendListItem
+                avatar="Nia"
+                name="Nia Harris"
+                score="300"
               />
             </Grid>
             <Grid item xs={12}>
@@ -162,7 +165,7 @@ const AppSocialTracker = () => {
       { count == '2' &&
         <React.Fragment>
           <h1>Add activities you're doing</h1>
-          <Box fontSize={16} m={2}>
+          <Box fontSize={16}>
             We use this to keep track of the activities you have done. If you tag an account that has a dangerous social activity score, you will be notified.
             We also use this to calculate your “social activity” score to track in real-time the danger level of doing an activity.
           </Box>
@@ -185,7 +188,7 @@ const AppSocialTracker = () => {
               <Chip label={option.score} variant="outlined" />
             </div> */}
               <Button style={{ marginLeft: '20px' }} label="Submit" type="submit" color="primary" variant="contained">
-                +
+                ADD
               </Button>
             </form>
           </div>
@@ -213,15 +216,15 @@ const AppSocialTracker = () => {
       { count == '3' &&
         <React.Fragment>
           <h1>Add places you're going</h1>
-          <Box fontSize={16} m={2}>
+          <Box fontSize={16}>
             We use this to keep track of the places you have gone. If you tag a location that has a dangerous social activity score, you will be notified.
             We also use this to calculate your “social activity” score to track in real-time the danger level of going to a location.
           </Box>
           <div className="app-form-container">
             <form noValidate autoComplete="off">
               <MapsAutoComplete/>
-              <Button style={{ marginLeft: '20px' }} label="Submit" type="submit" color="primary" variant="contained">
-                +
+              <Button style={{ marginLeft: '20px' }} label="Submit" type="submit" color="primary">
+                Add
               </Button>
             </form>
           </div>
@@ -245,7 +248,6 @@ const AppSocialTracker = () => {
           </div>
         </React.Fragment>
       }
-      </Router>
    </React.Fragment>
   );
 }

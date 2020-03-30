@@ -113,10 +113,6 @@ export const MapsAutoComplete = () => {
 
         return (
             <React.Fragment>
-                {/* <Script
-                    url="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlSf1wcnN3E3MOVPQqowCbVIGEUhby400&libraries=places"
-                    // onLoad={this.handleScriptLoad}
-                /> */}
                 <Grid container alignItems="center">
                     <Grid item>
                     <LocationOnIcon className={classes.icon} />

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import ScoreCard from '../components/ScoreCard';
 import Grid from '@material-ui/core/Grid';
-
+import Container from '@material-ui/core/Container';
 
 export default class Profile extends Component {
   state = {
@@ -11,10 +11,10 @@ export default class Profile extends Component {
   render () {
       return (
          <React.Fragment>
-            <div>
-               <h1>Your Sunday activity</h1>
-            </div>
-            <div style={{ display: 'flex', width: '75%'}}>
+            <Container maxWidth="sm">
+               <div>
+                  <h1>Your Sunday activity</h1>
+               </div>
                <Grid container spacing={2}>
                   <Grid item xs={6}>
                      <ScoreCard
@@ -49,7 +49,7 @@ export default class Profile extends Component {
                      />
                   </Grid>
                </Grid>
-            </div>
+            </Container>
         </React.Fragment>
       )
    }

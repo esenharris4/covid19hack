@@ -6,8 +6,9 @@ import React from 'react';
 // import TimerIcon from '@material-ui/icons/Timer';
 // import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
-import Avatar from './avatar'
-import Stats from './stats'
+import Avatar from './avatar';
+import Stats from './stats';
+import './../../App.css'
 
 
 export const FriendCard = ({ avatar, name, friendScore, time, backgroundColor, color }) => {
@@ -15,9 +16,11 @@ export const FriendCard = ({ avatar, name, friendScore, time, backgroundColor, c
   console.log('what is' + backgroundColor);
   return (
       <Paper elevation={3} style={{ borderRadius: '0'}}>
-        <Avatar
-          avatar={avatar}
-        />
+        <div className="app-avatar-position">
+          <Avatar
+            avatar={avatar}
+          />
+        </div>
         <h3>{name}</h3>
         <div style={{ display: 'flex', width: '100%', textAlign: 'center', paddingBottom: '32px', justifyContent: 'space-around'}}>
           <div style={{ backgroundColor: backgroundColor, color: color, width: '150px', padding: '8px', borderRadius: '50px'}}>

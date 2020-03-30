@@ -4,7 +4,7 @@ const StoreContext = React.createContext({});
 
 const initialState = {
     friendsAddedList: [],
-    navState: ''
+    navState: 'activity'
 };
 
 const StoreProvider = ({ children }) => {

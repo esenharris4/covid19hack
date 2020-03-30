@@ -12,6 +12,7 @@ import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import LocationOnIcon from '@material-ui/icons/Dashboard';
 import {StoreContext} from './../context/StoreContext';
 import {useStoreContext} from './../context/reducers';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -43,6 +44,9 @@ console.log(name);
     <div className={classes.root}>
       <AppBar position="static">
         <BottomNavigation value={navState} onChange={handleChange} className={classes.root}>
+          <Box fontWeight="fontWeightBold" fontSize={18} className="app-logo">
+            Social Tracker
+          </Box>
           <BottomNavigationAction label="Activity" value="activity" icon={<DirectionsRunIcon />}/>
           <BottomNavigationAction label="Dashboard" value="dashboard" icon={<LocationOnIcon />} />
           <BottomNavigationAction label="Profile" value="profile" icon={<PersonIcon />} />

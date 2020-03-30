@@ -9,9 +9,9 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     flexWrap: 'wrap',
     '& > *': {
-      margin: theme.spacing(5),
+      margin: theme.spacing(2),
       width: theme.spacing(30),
-      height: theme.spacing(45),
+      height: theme.spacing(40),
     },
   },
 }));
@@ -21,7 +21,7 @@ export const Friends = ({friends}) => {
   const classes = useStyles();
 
   return (
-    <Grid container spacing={2}>
+    <Grid container>
       <div className={classes.root}>
         <Grid item xs={3}>
           <FriendCard
@@ -29,46 +29,58 @@ export const Friends = ({friends}) => {
             name="Christie Molloy"
             friendScore="300"
             time="4"
+            backgroundColor="#E8F5E9"
+            color="#43A047"
           />
         </Grid>
         <Grid item xs={3}>
           <FriendCard
             avatar="Esen"
-            name="Christie Molloy"
-            friendScore="300"
-            time="4"
+            name="Esen Harris"
+            friendScore="970"
+            time="14"
+            backgroundColor="#FFEBEE"
+            color="#C62828"
           />
         </Grid>
         <Grid item xs={3}>
           <FriendCard
             avatar="Nia"
-            name="Christie Molloy"
-            friendScore="300"
-            time="4"
+            name="Nia Harris"
+            friendScore="780"
+            time="8"
+            backgroundColor="#FFEBEE"
+            color="#C62828"
           />
         </Grid>
         <Grid item xs={3}>
           <FriendCard
             avatar="Felipe"
-            name="Christie Molloy"
-            friendScore="300"
-            time="4"
+            name="Felipe Silva"
+            friendScore="650"
+            time="9"
+            backgroundColor="#FFCC80"
+            color="#C62828"
           />
         </Grid>
         <Grid item xs={3}>
           <FriendCard
             avatar="Sasha"
-            name="Christie Molloy"
-            friendScore="300"
-            time="4"
+            name="Sasha Boussena"
+            friendScore="500"
+            time="6"
+            backgroundColor="#FFCC80"
+            color="#C62828"
           />
         </Grid>
         <Grid item xs={3}>
           <FriendCard
             avatar="Tyler"
-            name="Christie Molloy"
-            friendScore="300"
-            time="4"
+            name="Tyler Inn"
+            friendScore="320"
+            time="12"
+            backgroundColor="#E8F5E9"
+            color="#43A047"
           />
         </Grid>
       </div>

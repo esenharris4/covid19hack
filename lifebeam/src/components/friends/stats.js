@@ -2,17 +2,14 @@ import React from 'react';
 import FavoriteBorderRoundedIcon from '@material-ui/icons/FavoriteBorderRounded';
 import { red,green } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
-import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import TimerIcon from '@material-ui/icons/Timer';
 import Box from '@material-ui/core/Box';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(3),
-    },
+    display: 'flex'
   },
   small: {
     width: theme.spacing(5),
@@ -24,22 +21,23 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const Stats = ({ friendScore, time }) => {
+export const Stats = ({ time }) => {
 
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <div>
-      <LocalHospitalIcon className={classes.small} style={{ color: '#B388FF' }}/>
-        <Box fontSize={24} fontFamily="fontFamily" m={1}>
-          {friendScore}
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '16px', border: '1px solid #ECEFF1', width: '25%'}}>
+        <TimerIcon style={{ color: '#CFD8DC', marginRight: '4px' }}/>
+        <Box fontSize={12} fontFamily="fontFamily" style={{ color: '#000' }}>
+          {time}
         </Box>
       </div>
-      <div>
-        <TimerIcon className={classes.small} style={{ color: '#B388FF' }}/>
-        <Box fontSize={24} fontFamily="fontFamily" m={1}>
-          {time}
+
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '16px', border: '1px solid #ECEFF1', width: '75%'}}>
+        <FavoriteBorderIcon style={{ color: '#CFD8DC', marginRight: '4px' }}/>
+        <Box fontSize={12} fontFamily="fontFamily" style={{ color: '#000' }}>
+          Reported Healthy
         </Box>
       </div>
     </div>

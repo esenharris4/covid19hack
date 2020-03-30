@@ -10,14 +10,20 @@ import Avatar from './avatar'
 import Stats from './stats'
 
 
-export const FriendCard = ({ avatar, name, friendScore, time }) => {
+export const FriendCard = ({ avatar, name, friendScore, time, backgroundColor, color }) => {
 
+  console.log('what is' + backgroundColor);
   return (
-      <Paper elevation={3}>
+      <Paper elevation={3} style={{ borderRadius: '0'}}>
         <Avatar
           avatar={avatar}
         />
         <h3>{name}</h3>
+        <div style={{ display: 'flex', width: '100%', textAlign: 'center', paddingBottom: '32px', justifyContent: 'space-around'}}>
+          <div style={{ backgroundColor: backgroundColor, color: color, width: '150px', padding: '8px', borderRadius: '50px'}}>
+            {friendScore} social score
+          </div>
+        </div>
         <Stats
           friendScore={friendScore}
           time={time}

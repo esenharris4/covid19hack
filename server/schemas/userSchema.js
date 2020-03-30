@@ -1,8 +1,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Users = new Schema({
+var User = new Schema({
   name:  String, // String is shorthand for {type: String}
   age: Number,
-  friendList:  Array,
-  socialScore: Number
+  friendlist:  Array,
+  socialscore: Number
 });
+
+module.exports = mongoose.model('User', User);

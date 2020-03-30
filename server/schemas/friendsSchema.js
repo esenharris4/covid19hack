@@ -6,3 +6,5 @@ var Friends = new Schema({
   datelastseen: Date,
   socialscore: Number
 });
+
+module.exports = mongoose.model('Friends', Friends);

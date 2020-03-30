@@ -8,104 +8,249 @@ import FriendListItem from './../components/FriendListItem';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import {StoreContext} from './../context/StoreContext';
+import {useStoreContext} from './../context/reducers';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import Chip from '@material-ui/core/Chip';
+import { makeStyles } from '@material-ui/core/styles';
+import { MapsAutoComplete } from './../components/MapsAutoComplete';
+// import { Link , BrowserRouter as Router } from 'react-router-dom';
+import Container from '@material-ui/core/Container';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    '& > *': {
+      margin: theme.spacing(0.5),
+    },
+  },
+}));
 
 const AppSocialTracker = () => {
   const [count, setCount] = useState(0);
+  
+  const [tempValue, setTempValue] = useState('');
+  const { friendsAddedList } = useStoreContext();
 
+  // const [value, setValue] = useState('');
+  // const { navState } = useStoreContext();
   // const {  } = useStoreContext();
+  // const handleChange = (event, newValue) => {
+  //   setState({...state, navState: newValue});
+  // };
+
   const [state, setState] = useContext(StoreContext);
 
-  const handleSubmit = (event) => {
-    const friendObject = event.target.value;
-    console.log('what is friend object' + friendObject);
-    setState({...state, friendsAddedList: friendObject});
+  const addCount = (page) => {
+    var newCount = count + 1;
+    setCount(newCount);
+    if ( page ) {
+      setState({...state, navState: page});
+    }
   }
+
+  // const handleSubmit = (event) => {
+  //   const friendObject = event.target.value;
+  //   console.log('what is friend object' + JSON.stringify(friendObject));
+  //   setState({...state, friendsAddedList: friendObject});
+  //   event.preventDefault();
+  // }
+
+  // const handleChange = (event) => {
+  //   setState({...state, friendsAddedList: event.target.value});
+  //   event.preventDefault();
+  //   console.log(event.target.value);
+  //   // console.log(friendsAddedList);
+  // }
+
+  const handleChange = (event) => {
+    setTempValue(event.target.value);
+    event.preventDefault();
+    console.log('what is the value' + event.target.value);
+  }
+
+  const handleClick = (value) => {
+    setState({...state, friendsAddedList: value});
+  }
+
+  const recentFriends = [
+    { name: 'Christie Molloy', score: 400 },
+    { name: 'Felipe Silva', score: 100 },
+    { name: 'Sasha Bousseina', score: 200 },
+    { name: 'Tyler Inn', score: 500 },
+    { name: 'Yesenia Harris', score: 500 },
+    { name: 'Derrec Harris', score: 500 }
+  ];
+
+  const recentActivities = [
+    { name: 'Caught train to work', score: 500 },
+    { name: 'Grocery shopping at Trader Joes', score: 400 },
+    { name: 'Running at Barrys Bootcamp, score: 100' },
+    { name: 'Acai Bowls at Acai House', score: 200 },
+    { name: 'Drinks at the Bunaglow', score: 500 },
+    { name: 'Dropped mail at USPS', score: 500 }
+  ];
+
+  // const recentPlaces = [
+  //   { name: 'Home', score: 400 },
+  //   { name: 'Venice Beach', score: 100 },
+  //   { name: 'Third Street Promenade', score: 200 },
+  //   { name: 'Melrose Avenue', score: 500 },
+  //   { name: 'Art District', score: 500 },
+  //   { name: 'The Beverly Center', score: 500 }
+  // ];
 
   return (
     <React.Fragment>
       { count == '0' &&
         <React.Fragment>
-          <AppDate/>
-          <Box fontSize={16}>
-            Welcome! We’d love to hear about what you’re up
-            to this Saturday so that we can give you your “Social Impact” score.
+          <Box fontWeight="fontWeightMedium" fontSize={28} style={{ padding: '40px' }}>
+
+            <AppDate/>
+            <h1>Welcome back, Esen!</h1>
+            <p>Please tell us what you're up to this Sunday, so that we can calculate your <span style={{ color: '#536DFE' }}>social impact score</span></p>
+
           </Box>
-          <Button className="app-next-button" variant="contained" color="primary" onClick={() => setCount(1)}>
-            Next
-          </Button>
+          <div style={{  position: 'fixed', bottom: '24px', right: '24px' }}>
+            <Button variant="outlined" size="large" color="primary" onClick={() => addCount()}>
+                Let's begin
+                <ArrowForwardIcon/>
+              </Button>
+          </div>
         </React.Fragment>
       }
 
       { count == '1' &&
         <React.Fragment>
-          <AppDate/>
-          <Box fontSize={32} m={1}>
-            Friends you're seeing
-          </Box>
-          <Box fontSize={12} m={1}>
+          <h1>Add friends you're seeing</h1>
+          <Box fontSize={16}>
             We use this to keep track of the people you have seen for 14 days.
             We also use this to calculate your “social activity” score to track in real-time the danger level of seeing a user.
           </Box>
-          <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-            <TextField id="standard-basic" label="Add friend" />
-            <input type="submit" value="Add name">
-            </input>
-          </form>
-            <Box fontSize={18} m={1}>
-              Friends added
-            </Box>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <FriendListItem
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FriendListItem/>
-              </Grid>
-              <Grid item xs={12}>
-                <FriendListItem/>
-              </Grid>
+          <div className="app-form-container">
+            <Autocomplete
+              id="combo-box-demo"
+              options={recentFriends}
+              getOptionLabel={(option) => option.name}
+              style={{ width: 600 }}
+              renderInput={(params) => <TextField {...params} value={tempValue} label="Add friends" variant="outlined" onChange={handleChange} />}
+            />
+            <Button style={{ marginLeft: '20px', height: '50px' }} label="Submit" color="primary">
+              Add
+            </Button>
+          </div>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <FriendListItem
+                avatar="Nia"
+                name="Nia Harris"
+                score="300"
+              />
             </Grid>
-
-            <Box fontSize={18} m={1}>
-              Recommended friends
-            </Box>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <FriendListItem
-                  name="Christie Molloy"
-                  score="300"
-                  recommended="true"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FriendListItem
-                  name="Esen Harris"
-                  score="200"
-                  recommended="true"
-                />
-              </Grid>
+            <Grid item xs={12}>
+              <FriendListItem/>
             </Grid>
-          <Button className="app-next-button" variant="contained" color="primary" onClick={() => setCount(2)}>
-            Next
-          </Button>
+            <Grid item xs={12}>
+              <FriendListItem/>
+            </Grid>
+          </Grid>
+          <div style={{  position: 'fixed', bottom: '24px', right: '24px' }}>
+            <Button variant="outlined" size="large" color="primary" onClick={() => addCount()}>
+                Next
+                <ArrowForwardIcon/>
+              </Button>
+          </div>
         </React.Fragment>
       }
 
       { count == '2' &&
         <React.Fragment>
-          Screen 3
-          <Button className="app-next-button" variant="contained" color="primary" onClick={() => setCount(3)}>
-            Next
-          </Button>
+          <h1>Add activities you're doing</h1>
+          <Box fontSize={16}>
+            We use this to keep track of the activities you have done. If you tag an account that has a dangerous social activity score, you will be notified.
+            We also use this to calculate your “social activity” score to track in real-time the danger level of doing an activity.
+          </Box>
+          <div className="app-form-container">
+            <form noValidate autoComplete="off">
+            <Autocomplete
+              multiple
+              id="combo-box-demo"
+              options={recentActivities}
+              getOptionLabel={(option) => option.name}
+              style={{ width: 600 }}
+              renderInput={(params) => <TextField {...params} label="Add activities" variant="outlined" />}
+              renderTags={(value, getTagProps) =>
+                value.map((option, index) => (
+                  <Chip label={option.score} {...getTagProps({ index })} />
+                ))
+              }
+            />
+            {/* <div className={classes.root}>
+              <Chip label={option.score} variant="outlined" />
+            </div> */}
+              <Button style={{ marginLeft: '20px' }} label="Submit" type="submit" color="primary" variant="contained">
+                ADD
+              </Button>
+            </form>
+          </div>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <FriendListItem
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <FriendListItem/>
+            </Grid>
+            <Grid item xs={12}>
+              <FriendListItem/>
+            </Grid>
+          </Grid>
+          <div style={{  position: 'fixed', bottom: '24px', right: '24px' }}>
+            <Button variant="outlined" size="large" color="primary" onClick={() => addCount()}>
+              Next
+              <ArrowForwardIcon/>
+            </Button>
+          </div>
         </React.Fragment>
       }
-    {/* <TextField
-      id="standard-password-input"
-      label="Password"
-      type="password"
-      autoComplete="current-password"
-    /> */}
+
+      { count == '3' &&
+        <React.Fragment>
+          <h1>Add places you're going</h1>
+          <Box fontSize={16}>
+            We use this to keep track of the places you have gone. If you tag a location that has a dangerous social activity score, you will be notified.
+            We also use this to calculate your “social activity” score to track in real-time the danger level of going to a location.
+          </Box>
+          <div className="app-form-container">
+            <form noValidate autoComplete="off">
+              <MapsAutoComplete/>
+              <Button style={{ marginLeft: '20px' }} label="Submit" type="submit" color="primary">
+                Add
+              </Button>
+            </form>
+          </div>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <FriendListItem
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <FriendListItem/>
+            </Grid>
+            <Grid item xs={12}>
+              <FriendListItem/>
+            </Grid>
+          </Grid>
+          <div style={{  position: 'fixed', bottom: '24px', right: '24px' }}>
+            <Button variant="outlined" size="large" color="primary" onClick={() => addCount('profile')}>
+              Next
+              <ArrowForwardIcon/>
+              </Button>
+          </div>
+        </React.Fragment>
+      }
    </React.Fragment>
   );
 }

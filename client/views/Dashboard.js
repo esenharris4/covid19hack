@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-import Friends from '../components/Friends';
+import Navbar from '../components/Navbar';
+import Friends from '../components/friend/Friends';
+import AppDate from '../components/Date';
+import Container from '@material-ui/core/Container';
 
 export default class Dashboard extends Component {
 
   render () {
       return (
-        <div>
-        <h1> Friends </h1>
-        <Friends />
-        </div>
+        <React.Fragment>
+          <div style={{ textAlign: 'center'}}>
+            <h1>Friends: Sunday activity</h1>
+          </div>
+          <Container maxWidth="xl">
+            <Friends />
+          </Container>
+        </React.Fragment>
       )
    }
 }

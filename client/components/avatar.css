@@ -1,0 +1,5 @@
+.app-avatar-position {
+  display: inline-flex;
+  margin: 16px;
+  align-content: center !important;
+}

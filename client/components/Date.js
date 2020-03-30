@@ -7,13 +7,13 @@ export const AppDate = () => {
 
     const getDate = () => {
         let dateObject = new Date();
-        let formattedDate = moment(dateObject).format('DD MMM, YYYY');
+        let formattedDate = moment(dateObject).format('dddd, DD MMM, YYYY');
         return formattedDate;
     }
 
     return (
         <Typography component="div">
-            <Box fontFamily="fontFamily" m={2}>
+            <Box fontFamily="fontFamily">
                 { getDate() }
             </Box>
         </Typography>

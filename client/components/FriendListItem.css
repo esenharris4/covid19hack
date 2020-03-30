@@ -9,6 +9,7 @@
 .fli-c-layout div {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .fli-c-layout-fab {

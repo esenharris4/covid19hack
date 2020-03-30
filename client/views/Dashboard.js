@@ -10,7 +10,7 @@ export default class Dashboard extends Component {
       return (
         <React.Fragment>
           <div style={{ textAlign: 'center'}}>
-            <h1>Friends: Sunday activity</h1>
+            <h1>Friends: Monday activity</h1>
           </div>
           <Container maxWidth="xl">
             <Friends />

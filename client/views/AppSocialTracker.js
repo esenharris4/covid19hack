@@ -32,6 +32,10 @@ const AppSocialTracker = () => {
   const [count, setCount] = useState(0);
   
   const [tempValue, setTempValue] = useState('');
+  const [fakeValue, setFakeValue] = useState('');
+  const [fakeValue2, setFakeValue2] = useState('');
+  const [fakeValue3, setFakeValue3] = useState('');
+
   const { friendsAddedList } = useStoreContext();
 
   // const [value, setValue] = useState('');
@@ -50,6 +54,20 @@ const AppSocialTracker = () => {
       setState({...state, navState: page});
     }
   }
+
+  // const fetchDataAction = async () => {
+  //   // make axios call
+  //   .then(function(insideApis) {
+  //       setState({...state, apiData: insideApis});
+  //   })
+  //   .catch(error => {
+  //     console.error("error getting API" + error);
+  //   });
+  //  }
+
+  // useEffect(() => {
+  //   fetchDataAction();
+  // }, []);
 
   // const handleSubmit = (event) => {
   //   const friendObject = event.target.value;
@@ -71,8 +89,23 @@ const AppSocialTracker = () => {
     console.log('what is the value' + event.target.value);
   }
 
-  const handleClick = (value) => {
-    setState({...state, friendsAddedList: value});
+  // const handleClick = (value) => {
+  //   setState({...state, friendsAddedList: value});
+  // }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    var valuePassedThrough = event.target.value;
+  
+    axios.post('/user', {
+      name: valuePassedThrough
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   const recentFriends = [
@@ -87,7 +120,7 @@ const AppSocialTracker = () => {
   const recentActivities = [
     { name: 'Caught train to work', score: 500 },
     { name: 'Grocery shopping at Trader Joes', score: 400 },
-    { name: 'Running at Barrys Bootcamp, score: 100' },
+    { name: 'Running at Barrys Bootcamp', score: 100 },
     { name: 'Acai Bowls at Acai House', score: 200 },
     { name: 'Drinks at the Bunaglow', score: 500 },
     { name: 'Dropped mail at USPS', score: 500 }
@@ -110,7 +143,7 @@ const AppSocialTracker = () => {
 
             <AppDate/>
             <h1>Welcome back, Esen!</h1>
-            <p>Please tell us what you're up to this Sunday, so that we can calculate your <span style={{ color: '#536DFE' }}>social impact score</span></p>
+            <p>Please tell us what you're up to this Monday, so that we can calculate your <span style={{ color: '#536DFE' }}>social impact score</span></p>
 
           </Box>
           <div style={{  position: 'fixed', bottom: '24px', right: '24px' }}>
@@ -130,16 +163,18 @@ const AppSocialTracker = () => {
             We also use this to calculate your “social activity” score to track in real-time the danger level of seeing a user.
           </Box>
           <div className="app-form-container">
-            <Autocomplete
-              id="combo-box-demo"
-              options={recentFriends}
-              getOptionLabel={(option) => option.name}
-              style={{ width: 600 }}
-              renderInput={(params) => <TextField {...params} value={tempValue} label="Add friends" variant="outlined" onChange={handleChange} />}
-            />
-            <Button style={{ marginLeft: '20px', height: '50px' }} label="Submit" color="primary">
-              Add
-            </Button>
+            <form onSubmit={handleSubmit}>
+              <Autocomplete
+                id="combo-box-demo"
+                options={recentFriends}
+                getOptionLabel={(option) => option.name}
+                style={{ width: 600 }}
+                renderInput={(params) => <TextField {...params} value={tempValue} label="Add friends" variant="outlined" onChange={handleChange} />}
+              />
+              <Button style={{ marginLeft: '20px', height: '50px' }} onClick={() => setFakeValue('true')} label="Submit" color="primary">
+                Add
+              </Button>
+            </form>
           </div>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -147,14 +182,30 @@ const AppSocialTracker = () => {
                 avatar="Nia"
                 name="Nia Harris"
                 score="300"
+                backgroundColor="#FFEBEE"
+                color="#C62828"
               />
             </Grid>
             <Grid item xs={12}>
-              <FriendListItem/>
+              <FriendListItem
+                  avatar="Felipe"
+                  name="Felipe Silva"
+                  score="600"
+                  backgroundColor="#FFCC80"
+                  color="#C62828"
+                />
             </Grid>
-            <Grid item xs={12}>
-              <FriendListItem/>
-            </Grid>
+            { fakeValue == 'true' &&
+              <Grid item xs={12}>
+              <FriendListItem
+                  avatar="Christie"
+                  name="Christie Molloy"
+                  score="100"
+                  backgroundColor="#E8F5E9"
+                  color="#43A047"
+                />
+              </Grid>
+            }
           </Grid>
           <div style={{  position: 'fixed', bottom: '24px', right: '24px' }}>
             <Button variant="outlined" size="large" color="primary" onClick={() => addCount()}>
@@ -175,37 +226,44 @@ const AppSocialTracker = () => {
           <div className="app-form-container">
             <form noValidate autoComplete="off">
             <Autocomplete
-              multiple
-              id="combo-box-demo"
-              options={recentActivities}
-              getOptionLabel={(option) => option.name}
-              style={{ width: 600 }}
-              renderInput={(params) => <TextField {...params} label="Add activities" variant="outlined" />}
-              renderTags={(value, getTagProps) =>
-                value.map((option, index) => (
-                  <Chip label={option.score} {...getTagProps({ index })} />
-                ))
-              }
-            />
-            {/* <div className={classes.root}>
-              <Chip label={option.score} variant="outlined" />
-            </div> */}
-              <Button style={{ marginLeft: '20px' }} label="Submit" type="submit" color="primary" variant="contained">
-                ADD
+                id="combo-box-demo"
+                options={recentActivities}
+                getOptionLabel={(option) => option.name}
+                style={{ width: 600 }}
+                renderInput={(params) => <TextField {...params} value={tempValue} label="Add friends" variant="outlined" onChange={handleChange} />}
+              />
+              <Button style={{ marginLeft: '20px' }} onClick={() => setFakeValue2('true')} color="primary">
+                Add
               </Button>
             </form>
           </div>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <FriendListItem
+                name="Caught train to work"
+                score="670"
+                backgroundColor="#FFEBEE"
+                color="#C62828"
               />
             </Grid>
             <Grid item xs={12}>
-              <FriendListItem/>
+              <FriendListItem
+                  name="Dropped mail to USPS"
+                  score="230"
+                  backgroundColor="#FFCC80"
+                  color="#C62828"
+                />
             </Grid>
-            <Grid item xs={12}>
-              <FriendListItem/>
-            </Grid>
+            { fakeValue2 == 'true' &&
+              <Grid item xs={12}>
+              <FriendListItem
+                  name="Running at Barrys Bootcamp"
+                  score="150"
+                  backgroundColor="#E8F5E9"
+                  color="#43A047"
+                />
+              </Grid>
+            }
           </Grid>
           <div style={{  position: 'fixed', bottom: '24px', right: '24px' }}>
             <Button variant="outlined" size="large" color="primary" onClick={() => addCount()}>
@@ -226,7 +284,7 @@ const AppSocialTracker = () => {
           <div className="app-form-container">
             <form noValidate autoComplete="off">
               <MapsAutoComplete/>
-              <Button style={{ marginLeft: '20px' }} label="Submit" type="submit" color="primary">
+              <Button style={{ marginLeft: '20px' }} onClick={() => setFakeValue3('true')} color="primary">
                 Add
               </Button>
             </form>
@@ -234,14 +292,30 @@ const AppSocialTracker = () => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <FriendListItem
+                name="Santa Monica Pier"
+                score="900"
+                backgroundColor="#FFEBEE"
+                color="#C62828"
               />
             </Grid>
             <Grid item xs={12}>
-              <FriendListItem/>
+              <FriendListItem
+                  name="Third Street Promenade"
+                  score="350"
+                  backgroundColor="#FFCC80"
+                  color="#C62828"
+                />
             </Grid>
-            <Grid item xs={12}>
-              <FriendListItem/>
-            </Grid>
+            { fakeValue3 == 'true' &&
+              <Grid item xs={12}>
+              <FriendListItem
+                  name="Melrose Avenue"
+                  score="300"
+                  backgroundColor="#E8F5E9"
+                  color="#43A047"
+                />
+              </Grid>
+            }
           </Grid>
           <div style={{  position: 'fixed', bottom: '24px', right: '24px' }}>
             <Button variant="outlined" size="large" color="primary" onClick={() => addCount('profile')}>

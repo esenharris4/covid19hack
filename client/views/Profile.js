@@ -11,7 +11,7 @@ export default class Profile extends Component {
          <React.Fragment>
             <Container maxWidth="sm">
                <div>
-                  <h1>Your Sunday activity</h1>
+                  <h1>Your Monday activity</h1>
                </div>
                <Grid container spacing={2}>
                   <Grid item xs={6}>

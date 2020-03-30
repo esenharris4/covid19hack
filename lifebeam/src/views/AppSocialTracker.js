@@ -30,19 +30,18 @@ const useStyles = makeStyles((theme) => ({
 
 const AppSocialTracker = () => {
   const [count, setCount] = useState(0);
-  // const [value, setValue] = useState('');
-  // const { friendsAddedList } = useStoreContext();
+  
+  const [tempValue, setTempValue] = useState('');
+  const { friendsAddedList } = useStoreContext();
 
+  // const [value, setValue] = useState('');
   // const { navState } = useStoreContext();
   // const {  } = useStoreContext();
-
-  const [state, setState] = useContext(StoreContext);
-
   // const handleChange = (event, newValue) => {
   //   setState({...state, navState: newValue});
   // };
 
-
+  const [state, setState] = useContext(StoreContext);
 
   const addCount = (page) => {
     var newCount = count + 1;
@@ -51,10 +50,6 @@ const AppSocialTracker = () => {
       setState({...state, navState: page});
     }
   }
-
-  // const {  } = useStoreContext()
-
-  const classes = useStyles();
 
   // const handleSubmit = (event) => {
   //   const friendObject = event.target.value;
@@ -69,6 +64,16 @@ const AppSocialTracker = () => {
   //   console.log(event.target.value);
   //   // console.log(friendsAddedList);
   // }
+
+  const handleChange = (event) => {
+    setTempValue(event.target.value);
+    event.preventDefault();
+    console.log('what is the value' + event.target.value);
+  }
+
+  const handleClick = (value) => {
+    setState({...state, friendsAddedList: value});
+  }
 
   const recentFriends = [
     { name: 'Christie Molloy', score: 400 },
@@ -125,18 +130,16 @@ const AppSocialTracker = () => {
             We also use this to calculate your “social activity” score to track in real-time the danger level of seeing a user.
           </Box>
           <div className="app-form-container">
-            <form noValidate autoComplete="off">
-              <Autocomplete
-                id="combo-box-demo"
-                options={recentFriends}
-                getOptionLabel={(option) => option.name}
-                style={{ width: 600 }}
-                renderInput={(params) => <TextField {...params} label="Add friends" variant="outlined" />}
-              />
-              <Button style={{ marginLeft: '20px', height: '50px' }} label="Submit" type="submit" color="primary">
-                Add
-              </Button>
-            </form>
+            <Autocomplete
+              id="combo-box-demo"
+              options={recentFriends}
+              getOptionLabel={(option) => option.name}
+              style={{ width: 600 }}
+              renderInput={(params) => <TextField {...params} value={tempValue} label="Add friends" variant="outlined" onChange={handleChange} />}
+            />
+            <Button style={{ marginLeft: '20px', height: '50px' }} label="Submit" color="primary">
+              Add
+            </Button>
           </div>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -206,9 +209,9 @@ const AppSocialTracker = () => {
           </Grid>
           <div style={{  position: 'fixed', bottom: '24px', right: '24px' }}>
             <Button variant="outlined" size="large" color="primary" onClick={() => addCount()}>
-                Next
-                <ArrowForwardIcon/>
-              </Button>
+              Next
+              <ArrowForwardIcon/>
+            </Button>
           </div>
         </React.Fragment>
       }

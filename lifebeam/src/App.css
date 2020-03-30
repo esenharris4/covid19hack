@@ -12,14 +12,11 @@
 }
 
 .app-form-container {
+  display: flex;
+  align-items: center;
   padding-top: 32px;
   padding-bottom: 32px;
   width: 100%;
-}
-
-.app-form-container form {
-  display: flex;
-  align-items: center;
 }
 
 .app-logo {
